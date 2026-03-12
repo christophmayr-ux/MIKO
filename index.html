@@ -6,7 +6,7 @@
   <title>Miko – eine Legende auf vier Pfoten</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --cream: #f5ede0;
@@ -23,7 +23,6 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -33,7 +32,6 @@
       overflow-x: hidden;
     }
 
-    /* ── NOISE TEXTURE OVERLAY ── */
     body::before {
       content: '';
       position: fixed;
@@ -49,179 +47,153 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(245, 237, 224, 0.88);
+      background: rgba(245,237,224,0.92);
       backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(184,134,78,0.18);
     }
-
     .topbar-inner {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 32px;
+      padding: 0 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 64px;
+      height: 52px;
+      gap: 12px;
     }
-
     .brand {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
-      font-size: 18px;
+      font-size: 16px;
       color: var(--ink);
-      letter-spacing: 0.3px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
+    .brand em { font-style: italic; color: var(--gold); }
 
-    .brand em {
-      font-style: italic;
-      color: var(--gold);
+    nav {
+      display: flex;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: 2px;
     }
-
+    nav::-webkit-scrollbar { display: none; }
     nav a {
-      font-size: 13px;
+      font-size: 10px;
       font-weight: 500;
       color: var(--ink-soft);
       text-decoration: none;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.6px;
       text-transform: uppercase;
-      margin-left: 32px;
+      padding: 5px 8px;
+      white-space: nowrap;
+      border-radius: 3px;
       transition: color 0.2s;
+      -webkit-tap-highlight-color: transparent;
     }
-
-    nav a:hover { color: var(--gold); }
+    nav a:hover, nav a:active { color: var(--gold); }
 
     /* ── HERO ── */
     .hero {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 80px 32px 60px;
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 64px;
-      align-items: center;
+      padding: 36px 20px 28px;
     }
+    .hero-text { margin-bottom: 28px; }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      font-size: 11px;
+      gap: 8px;
+      font-size: 10px;
       font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 2.5px;
+      letter-spacing: 2px;
       color: var(--gold);
-      margin-bottom: 24px;
+      margin-bottom: 14px;
     }
-
     .eyebrow::before, .eyebrow::after {
       content: '';
-      width: 28px;
+      width: 18px;
       height: 1px;
       background: var(--gold-light);
     }
 
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(52px, 7vw, 88px);
+      font-size: clamp(38px, 10vw, 88px);
       font-weight: 900;
       line-height: 0.93;
-      letter-spacing: -2px;
-      margin-bottom: 28px;
+      letter-spacing: -1.5px;
+      margin-bottom: 18px;
       color: var(--ink);
     }
-
-    h1 em {
-      font-style: italic;
-      color: var(--gold);
-      display: block;
-    }
+    h1 em { font-style: italic; color: var(--gold); display: block; }
 
     .subtitle {
-      font-size: 17px;
+      font-size: 15px;
       line-height: 1.7;
       color: var(--ink-soft);
-      max-width: 520px;
-      margin-bottom: 36px;
+      margin-bottom: 24px;
       font-weight: 300;
     }
 
     .hero-actions {
       display: flex;
-      gap: 14px;
+      gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 32px;
+      margin-bottom: 22px;
     }
-
     .btn {
       display: inline-block;
       text-decoration: none;
-      padding: 14px 26px;
+      padding: 11px 18px;
       border-radius: 4px;
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.8px;
       text-transform: uppercase;
       transition: all 0.25s;
+      -webkit-tap-highlight-color: transparent;
     }
-
-    .btn-primary {
-      background: var(--gold);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: var(--rust);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(184,134,78,0.35);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--ink);
-      border: 1px solid rgba(28,20,16,0.2);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-      transform: translateY(-2px);
-    }
+    .btn-primary { background: var(--gold); color: white; }
+    .btn-primary:hover { background: var(--rust); transform: translateY(-2px); }
+    .btn-secondary { background: transparent; color: var(--ink); border: 1px solid rgba(28,20,16,0.2); }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
 
     .hero-note {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--ink-muted);
       line-height: 1.65;
       font-style: italic;
       border-left: 2px solid var(--gold-light);
-      padding-left: 16px;
+      padding-left: 14px;
     }
 
-    /* ── HERO PHOTO FRAME ── */
     .hero-frame {
       position: relative;
+      max-width: 380px;
+      margin: 0 auto;
     }
-
     .hero-frame::before {
       content: '';
       position: absolute;
-      top: -12px;
-      right: -12px;
-      width: 100%;
-      height: 100%;
+      top: -10px; right: -10px;
+      width: 100%; height: 100%;
       border: 1px solid var(--gold-light);
       border-radius: 6px;
       z-index: 0;
     }
-
     .hero-photo-wrap {
       position: relative;
       z-index: 1;
       background: var(--cream-dark);
       border-radius: 6px;
       overflow: hidden;
-      box-shadow: 0 32px 80px rgba(28,20,16,0.18);
+      box-shadow: 0 20px 60px rgba(28,20,16,0.18);
     }
-
     .hero-image {
       width: 100%;
       aspect-ratio: 3/4;
@@ -229,86 +201,50 @@
       display: block;
       filter: sepia(0.12) contrast(1.04) saturate(0.95);
     }
-
     .hero-caption {
-      padding: 16px 20px;
+      padding: 12px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-
-    .hero-caption span {
-      font-size: 12px;
-      color: var(--ink-muted);
-      letter-spacing: 0.5px;
-    }
-
-    .hero-caption strong {
-      font-family: 'Playfair Display', serif;
-      font-size: 13px;
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    /* ── DIVIDER ── */
-    .divider {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 32px;
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .divider-line {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(184,134,78,0.3), transparent);
-    }
-
-    .divider-ornament {
-      font-size: 20px;
-      color: var(--gold-light);
-    }
+    .hero-caption span { font-size: 11px; color: var(--ink-muted); }
+    .hero-caption strong { font-family: 'Playfair Display', serif; font-size: 12px; font-style: italic; color: var(--gold); }
 
     /* ── STATS BAND ── */
     .stats-band {
       background: var(--ink);
       color: white;
-      padding: 48px 32px;
-      margin: 48px 0;
+      padding: 32px 20px;
+      margin: 32px 0;
     }
-
     .stats-band-inner {
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
+      grid-template-columns: 1fr 1fr;
     }
-
     .stat-item {
       text-align: center;
-      padding: 16px 24px;
+      padding: 14px 10px;
       border-right: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-
-    .stat-item:last-child { border-right: none; }
-
+    .stat-item:nth-child(2) { border-right: none; }
+    .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom: none; }
+    .stat-item:nth-child(4) { border-right: none; }
     .stat-num {
       font-family: 'Playfair Display', serif;
-      font-size: 42px;
+      font-size: clamp(22px, 5vw, 42px);
       font-weight: 700;
       color: var(--gold-light);
       line-height: 1;
-      margin-bottom: 10px;
+      margin-bottom: 7px;
     }
-
     .stat-desc {
-      font-size: 12px;
+      font-size: 10px;
       color: rgba(255,255,255,0.5);
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
       font-weight: 500;
     }
 
@@ -316,449 +252,348 @@
     section {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 64px 32px;
+      padding: 44px 20px;
     }
-
     .section-label {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 3px;
       color: var(--gold);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
-
     h2 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(32px, 4vw, 52px);
+      font-size: clamp(26px, 6vw, 52px);
       font-weight: 700;
-      line-height: 1.08;
-      margin-bottom: 14px;
+      line-height: 1.1;
+      margin-bottom: 12px;
       letter-spacing: -0.5px;
     }
-
     .section-intro {
-      font-size: 16px;
+      font-size: 14px;
       color: var(--ink-soft);
       line-height: 1.7;
-      max-width: 680px;
       font-weight: 300;
-      margin-bottom: 48px;
+      margin-bottom: 32px;
     }
 
     /* ── TIMELINE ── */
     .timeline {
       display: flex;
       flex-direction: column;
-      gap: 0;
       border-left: 1px solid rgba(184,134,78,0.25);
-      margin-left: 20px;
+      margin-left: 10px;
     }
-
     .tl-item {
       position: relative;
-      padding: 0 0 48px 40px;
-      animation: fadeUp 0.6s ease both;
+      padding: 0 0 32px 26px;
     }
-
     .tl-item::before {
       content: '';
       position: absolute;
-      left: -5px;
-      top: 6px;
-      width: 9px;
-      height: 9px;
+      left: -5px; top: 5px;
+      width: 9px; height: 9px;
       border-radius: 50%;
       background: var(--gold);
       box-shadow: 0 0 0 3px var(--gold-pale);
     }
-
-    .tl-date {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 8px;
-    }
-
-    .tl-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--ink);
-    }
-
-    .tl-text {
-      font-size: 15px;
-      color: var(--ink-soft);
-      line-height: 1.7;
-      font-weight: 300;
-      max-width: 620px;
-    }
+    .tl-date { font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
+    .tl-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; margin-bottom: 7px; color: var(--ink); }
+    .tl-text { font-size: 14px; color: var(--ink-soft); line-height: 1.7; font-weight: 300; }
 
     /* ── CARDS ── */
     .cards-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      grid-template-columns: 1fr;
+      gap: 14px;
     }
-
     .card {
       background: var(--warm-white);
       border: 1px solid rgba(184,134,78,0.15);
       border-radius: 6px;
-      padding: 32px;
+      padding: 22px;
       position: relative;
       overflow: hidden;
       transition: transform 0.25s, box-shadow 0.25s;
     }
-
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 48px rgba(28,20,16,0.1);
-    }
-
+    .card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(28,20,16,0.1); }
     .card::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 3px;
-      height: 100%;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
       background: linear-gradient(180deg, var(--gold), transparent);
     }
-
-    .card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 14px;
-      color: var(--ink);
-    }
-
-    .card p {
-      font-size: 15px;
-      line-height: 1.72;
-      color: var(--ink-soft);
-      font-weight: 300;
-    }
-
-    .card p + p { margin-top: 12px; }
+    .card h3 { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; margin-bottom: 10px; color: var(--ink); }
+    .card p { font-size: 14px; line-height: 1.72; color: var(--ink-soft); font-weight: 300; }
+    .card p + p { margin-top: 10px; }
 
     /* ── PILLS ── */
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 18px;
-    }
-
-    .pill {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      padding: 6px 14px;
-      border-radius: 2px;
-      background: var(--gold-pale);
-      color: var(--rust);
-      border: 1px solid rgba(184,134,78,0.2);
-    }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+    .pill { font-size: 11px; font-weight: 500; padding: 5px 11px; border-radius: 2px; background: var(--gold-pale); color: var(--rust); border: 1px solid rgba(184,134,78,0.2); }
 
     /* ── PULL QUOTE ── */
-    .pull-quote-section {
-      background: var(--ink);
-      padding: 80px 32px;
-      margin: 0;
-      max-width: 100%;
-    }
-
-    .pull-quote-inner {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
+    .pull-quote-section { background: var(--ink); padding: 56px 20px; }
+    .pull-quote-inner { max-width: 800px; margin: 0 auto; text-align: center; }
     .pull-quote {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(26px, 4vw, 44px);
+      font-size: clamp(18px, 5vw, 40px);
       font-style: italic;
       font-weight: 400;
-      line-height: 1.35;
+      line-height: 1.4;
       color: var(--cream);
       position: relative;
+      padding-top: 16px;
     }
-
     .pull-quote::before {
       content: '\201C';
-      font-size: 120px;
+      font-size: 72px;
       color: rgba(184,134,78,0.25);
       font-family: 'Playfair Display', serif;
       position: absolute;
-      top: -40px;
-      left: -20px;
+      top: -14px; left: 0;
       line-height: 1;
     }
-
-    .quote-attr {
-      margin-top: 24px;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold-light);
-    }
-
-    /* ── CHARACTER WIDE CARD ── */
-    .wide-card {
-      background: var(--warm-white);
-      border: 1px solid rgba(184,134,78,0.15);
-      border-radius: 6px;
-      padding: 40px 48px;
-      margin-bottom: 20px;
-    }
-
-    /* ── FOOTER ── */
-    .site-footer {
-      background: var(--cream-dark);
-      border-top: 1px solid rgba(184,134,78,0.2);
-      padding: 64px 32px;
-      text-align: center;
-    }
-
-    .footer-inner {
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    .footer-ornament {
-      font-size: 28px;
-      margin-bottom: 20px;
-      color: var(--gold-light);
-    }
-
-    .footer-inner h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 36px;
-      margin-bottom: 16px;
-    }
-
-    .footer-inner p {
-      font-size: 16px;
-      color: var(--ink-soft);
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    .footer-meta {
-      margin-top: 48px;
-      font-size: 12px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .fade-in {
-      animation: fadeUp 0.7s ease both;
-    }
-
-    .fade-in-delay-1 { animation-delay: 0.1s; }
-    .fade-in-delay-2 { animation-delay: 0.2s; }
-    .fade-in-delay-3 { animation-delay: 0.3s; }
+    .quote-attr { margin-top: 18px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-light); }
 
     /* ── FEEDING SECTION ── */
-    .feeding-section {
-      background: var(--ink);
-      padding: 80px 32px;
-      margin: 0;
-      max-width: 100%;
-      position: relative;
-      overflow: hidden;
-    }
+    .feeding-section { background: var(--ink); padding: 56px 20px; position: relative; overflow: hidden; }
+    .feeding-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 2; }
+    .feeding-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 3px; color: var(--gold-light); margin-bottom: 10px; text-align: center; }
+    .feeding-title { font-family: 'Playfair Display', serif; font-size: clamp(26px, 6vw, 52px); font-weight: 700; color: var(--cream); text-align: center; margin-bottom: 8px; }
+    .feeding-title em { font-style: italic; color: var(--gold-light); }
+    .feeding-subtitle { text-align: center; color: rgba(255,255,255,0.45); font-size: 13px; margin-bottom: 36px; letter-spacing: 0.5px; }
 
-    .feeding-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-
-    .feeding-label {
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      color: var(--gold-light);
-      margin-bottom: 12px;
-      text-align: center;
-    }
-
-    .feeding-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(32px, 4vw, 52px);
-      font-weight: 700;
-      color: var(--cream);
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    .feeding-title em {
-      font-style: italic;
-      color: var(--gold-light);
-    }
-
-    .feeding-subtitle {
-      text-align: center;
-      color: rgba(255,255,255,0.45);
-      font-size: 14px;
-      margin-bottom: 52px;
-      letter-spacing: 0.5px;
-    }
-
-    .meals-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-bottom: 32px;
-    }
-
+    .meals-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 20px; }
     .meal-card {
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(184,134,78,0.25);
       border-radius: 8px;
-      padding: 32px;
+      padding: 22px;
       position: relative;
       overflow: hidden;
-      transition: background 0.3s;
     }
+    .meal-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--gold), transparent); }
+    .meal-time { display: flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 14px; }
+    .meal-time-icon { font-size: 15px; }
+    .meal-card h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: white; margin-bottom: 14px; font-style: italic; }
+    .ingredient-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .ingredient-list li { display: flex; align-items: flex-start; gap: 11px; font-size: 14px; color: rgba(255,255,255,0.75); font-weight: 300; line-height: 1.5; }
+    .ingredient-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+    .ingredient-amount { font-weight: 500; color: var(--gold-light); }
 
-    .meal-card:hover {
-      background: rgba(255,255,255,0.09);
+    .feeding-note { background: rgba(184,134,78,0.12); border: 1px solid rgba(184,134,78,0.25); border-radius: 6px; padding: 16px 18px; text-align: center; color: rgba(255,255,255,0.55); font-size: 13px; font-style: italic; line-height: 1.65; }
+    .feeding-note strong { color: var(--gold-light); font-style: normal; }
+
+    /* ── LOST & FOUND ── */
+    .lostfound-section {
+      background: var(--paper);
+      padding: 56px 20px;
     }
-
-    .meal-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 3px;
-      background: linear-gradient(90deg, var(--gold), transparent);
+    .lostfound-inner {
+      max-width: 900px;
+      margin: 0 auto;
     }
-
-    .meal-time {
-      display: flex;
+    .lostfound-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .lostfound-badge {
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
-      font-size: 11px;
+      gap: 8px;
+      background: #e8f5e9;
+      border: 1px solid #a5d6a7;
+      color: #2e7d32;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .lostfound-badge.red {
+      background: #fdecea;
+      border-color: #ef9a9a;
+      color: #c62828;
+    }
+
+    .lostfound-contact-card {
+      background: var(--ink);
+      border-radius: 12px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      text-align: center;
+      margin-bottom: 28px;
+      box-shadow: 0 16px 48px rgba(28,20,16,0.15);
+    }
+    .lostfound-contact-card .contact-label {
+      font-size: 10px;
       font-weight: 500;
       letter-spacing: 2.5px;
       text-transform: uppercase;
       color: var(--gold-light);
-      margin-bottom: 20px;
     }
-
-    .meal-time-icon { font-size: 18px; }
-
-    .meal-card h3 {
+    .lostfound-contact-card .contact-name {
       font-family: 'Playfair Display', serif;
-      font-size: 26px;
+      font-size: clamp(20px, 4vw, 28px);
+      font-weight: 700;
       color: white;
-      margin-bottom: 20px;
-      font-style: italic;
     }
-
-    .ingredient-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+    .lostfound-contact-card .contact-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: clamp(22px, 5vw, 34px);
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: var(--gold-light);
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: color 0.2s;
     }
+    .lostfound-contact-card .contact-phone:hover { color: white; }
+    .contact-phone-icon { font-size: 24px; }
 
-    .ingredient-list li {
-      display: flex;
-      align-items: flex-start;
+    .lostfound-rules {
+      display: grid;
+      grid-template-columns: 1fr;
       gap: 14px;
-      font-size: 15px;
-      color: rgba(255,255,255,0.75);
-      font-weight: 300;
-      line-height: 1.5;
     }
-
-    .ingredient-icon {
-      font-size: 18px;
-      flex-shrink: 0;
-      margin-top: 1px;
+    .rule-card {
+      background: var(--warm-white);
+      border: 1px solid rgba(184,134,78,0.15);
+      border-radius: 8px;
+      padding: 20px 22px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-
-    .ingredient-amount {
-      font-weight: 500;
-      color: var(--gold-light);
+    .rule-card:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(28,20,16,0.08); }
+    .rule-card.do::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: #4caf50;
     }
-
-    .feeding-note {
-      background: rgba(184,134,78,0.12);
-      border: 1px solid rgba(184,134,78,0.25);
-      border-radius: 6px;
-      padding: 20px 24px;
-      text-align: center;
-      color: rgba(255,255,255,0.55);
+    .rule-card.dont::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: #ef5350;
+    }
+    .rule-card.special::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: linear-gradient(180deg, var(--gold), var(--gold-light));
+    }
+    .rule-icon { font-size: 24px; flex-shrink: 0; margin-top: 1px; }
+    .rule-content h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 5px;
+    }
+    .rule-content p {
       font-size: 13px;
-      font-style: italic;
+      color: var(--ink-soft);
       line-height: 1.65;
+      font-weight: 300;
     }
+    .rule-tag {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      margin-bottom: 6px;
+    }
+    .rule-tag.do { background: #e8f5e9; color: #2e7d32; }
+    .rule-tag.dont { background: #fdecea; color: #c62828; }
+    .rule-tag.tip { background: var(--gold-pale); color: var(--rust); }
 
-    .feeding-note strong {
-      color: var(--gold-light);
-      font-style: normal;
-    }
+    /* ── FOOTER ── */
+    .site-footer { background: var(--cream-dark); border-top: 1px solid rgba(184,134,78,0.2); padding: 48px 20px; text-align: center; }
+    .footer-inner { max-width: 680px; margin: 0 auto; }
+    .footer-ornament { font-size: 22px; margin-bottom: 14px; color: var(--gold-light); }
+    .footer-inner h2 { font-family: 'Playfair Display', serif; font-size: clamp(22px, 5vw, 36px); margin-bottom: 12px; }
+    .footer-inner p { font-size: 14px; color: var(--ink-soft); line-height: 1.7; font-weight: 300; }
+    .footer-meta { margin-top: 32px; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-muted); line-height: 2; }
 
     /* ── FLOATING EMOJIS ── */
-    .emoji-float {
-      position: fixed;
-      font-size: 28px;
-      pointer-events: none;
-      z-index: 9998;
-      animation: floatUp var(--dur, 4s) ease-in forwards;
-      opacity: 0;
-      user-select: none;
-    }
-
+    .emoji-float { position: fixed; pointer-events: none; z-index: 9998; animation: floatUp var(--dur, 4s) ease-in forwards; opacity: 0; user-select: none; }
     @keyframes floatUp {
       0%   { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.6); }
       15%  { opacity: 1; transform: translateY(-60px) rotate(8deg) scale(1); }
       80%  { opacity: 0.8; }
-      100% { opacity: 0; transform: translateY(-280px) rotate(-12deg) scale(0.8); }
+      100% { opacity: 0; transform: translateY(-240px) rotate(-12deg) scale(0.8); }
     }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in { animation: fadeUp 0.7s ease both; }
+    .fade-in-delay-2 { animation-delay: 0.2s; }
+
+    /* ── TABLET 600px+ ── */
+    @media (min-width: 600px) {
+      .topbar-inner { padding: 0 28px; height: 58px; }
+      nav a { font-size: 11px; padding: 6px 12px; }
+      .hero { padding: 52px 28px 36px; }
+      .cards-grid { grid-template-columns: 1fr 1fr; }
+      .meals-grid { grid-template-columns: 1fr 1fr; }
+      .lostfound-rules { grid-template-columns: 1fr 1fr; }
+      .stats-band-inner { grid-template-columns: repeat(4, 1fr); }
+      .stat-item { border-bottom: none; }
+      .stat-item:nth-child(2) { border-right: 1px solid rgba(255,255,255,0.08); }
+      .stat-item:last-child { border-right: none; }
+    }
+
+    /* ── DESKTOP 960px+ ── */
+    @media (min-width: 960px) {
+      .topbar-inner { padding: 0 32px; height: 64px; }
+      nav a { font-size: 13px; padding: 6px 16px; }
+
       .hero {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        padding: 48px 24px 40px;
+        padding: 80px 32px 60px;
+        display: grid;
+        grid-template-columns: 1fr 420px;
+        gap: 64px;
+        align-items: center;
       }
+      .hero-text { margin-bottom: 0; }
+      .hero-frame { margin: 0; max-width: none; }
+      .subtitle { font-size: 17px; }
+      .btn { padding: 14px 26px; font-size: 13px; }
+      .hero-note { font-size: 14px; }
 
-      .hero-frame { max-width: 380px; }
+      section { padding: 64px 32px; }
+      .feeding-section { padding: 80px 32px; }
+      .pull-quote-section { padding: 80px 32px; }
+      .stats-band { padding: 48px 32px; }
 
-      .stats-band-inner {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .stat-item:nth-child(2) { border-right: none; }
-
-      .cards-grid {
-        grid-template-columns: 1fr;
-      }
-
-      section { padding: 48px 24px; }
-
-      .topbar-inner { padding: 0 24px; }
-      nav { display: none; }
+      .card { padding: 32px; }
+      .card h3 { font-size: 22px; }
+      .meal-card { padding: 32px; }
+      .meal-card h3 { font-size: 26px; }
+      .tl-item { padding: 0 0 48px 40px; }
+      .tl-title { font-size: 22px; }
+      .tl-text { font-size: 15px; }
+      .section-intro { font-size: 16px; }
     }
   </style>
 </head>
@@ -773,32 +608,24 @@
         <a href="#charakter">Charakter</a>
         <a href="#alltag">Alltag</a>
         <a href="#fuetterung">Fütterung</a>
+        <a href="#lostfound">Lost & Found</a>
       </nav>
     </div>
   </header>
 
   <main>
 
-    <!-- HERO -->
     <div class="hero">
-      <div class="fade-in">
+      <div class="hero-text fade-in">
         <div class="eyebrow">Hund · Ikone · Karotten-Tiger</div>
         <h1>Miko –<em>eine Legende</em>auf vier Pfoten</h1>
-        <p class="subtitle">
-          Von der Straße in die Berge – und direkt ins Herz.
-          Ein reinrassiger ungarischer Straßenmix mit traurigem Blick, großem Charakter
-          und sehr klaren Vorstellungen davon, wie das Leben zu laufen hat.
-        </p>
+        <p class="subtitle">Von der Straße in die Berge – und direkt ins Herz. Ein reinrassiger ungarischer Straßenmix mit traurigem Blick, großem Charakter und sehr klaren Vorstellungen davon, wie das Leben zu laufen hat.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#geschichte">Mikos Geschichte</a>
           <a class="btn btn-secondary" href="#charakter">Warum er speziell ist</a>
         </div>
-        <p class="hero-note">
-          Stur, kuschelig, verschmust, leicht kompliziert und bei unvorhergesehenen Ereignissen
-          innerlich bereits im Krisenmodus: Miko ist kein gewöhnlicher Hund. Miko ist ein Gesamtkonzept.
-        </p>
+        <p class="hero-note">Stur, kuschelig, verschmust, leicht kompliziert und bei unvorhergesehenen Ereignissen innerlich bereits im Krisenmodus: Miko ist kein gewöhnlicher Hund. Miko ist ein Gesamtkonzept.</p>
       </div>
-
       <div class="hero-frame fade-in fade-in-delay-2">
         <div class="hero-photo-wrap">
           <img src="Miko.jpg" alt="Miko schaut mit seinem typischen traurigen Blick in die Kamera" class="hero-image">
@@ -810,280 +637,266 @@
       </div>
     </div>
 
-    <!-- STATS BAND -->
     <div class="stats-band" id="fakten">
       <div class="stats-band-inner">
-        <div class="stat-item">
-          <div class="stat-num">5</div>
-          <div class="stat-desc">Jahre alt</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">09.11.20</div>
-          <div class="stat-desc">Geboren</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">26.01.21</div>
-          <div class="stat-desc">bei mir eingezogen</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">100%</div>
-          <div class="stat-desc">ungarischer Straßenmix mit Meinung</div>
-        </div>
+        <div class="stat-item"><div class="stat-num">5</div><div class="stat-desc">Jahre alt</div></div>
+        <div class="stat-item"><div class="stat-num">09.11.20</div><div class="stat-desc">Geboren</div></div>
+        <div class="stat-item"><div class="stat-num">26.01.21</div><div class="stat-desc">bei mir eingezogen</div></div>
+        <div class="stat-item"><div class="stat-num">100%</div><div class="stat-desc">ungarischer Straßenmix mit Meinung</div></div>
       </div>
     </div>
 
-    <!-- GESCHICHTE -->
     <section id="geschichte">
       <div class="section-label">Love Story</div>
-      <h2>Eine ungarisch-<br>österreichische Geschichte</h2>
-      <p class="section-intro">
-        Miko kam über eine Tiervermittlung zu mir. Und wie das bei den wirklich großen Liebesgeschichten so ist:
-        Es wurde nicht lange gefragt, sondern einfach klar, dass dieser kleine, traurige, kuschelige Spezialist jetzt dazugehört.
-      </p>
-
+      <h2>Eine ungarisch-österreichische Geschichte</h2>
+      <p class="section-intro">Miko kam über eine Tiervermittlung zu mir. Und wie das bei den wirklich großen Liebesgeschichten so ist: Es wurde nicht lange gefragt, sondern einfach klar, dass dieser kleine, traurige, kuschelige Spezialist jetzt dazugehört.</p>
       <div class="timeline">
         <div class="tl-item">
           <div class="tl-date">09. November 2020</div>
           <div class="tl-title">Geburt von Miko.</div>
-          <p class="tl-text">
-            Irgendwo begann die Geschichte eines Hundes, der später in Österreich nicht nur ein Zuhause,
-            sondern auch ein Kopfende im Bett erobern würde.
-          </p>
+          <p class="tl-text">Irgendwo begann die Geschichte eines Hundes, der später in Österreich nicht nur ein Zuhause, sondern auch ein Kopfende im Bett erobern würde.</p>
         </div>
         <div class="tl-item">
           <div class="tl-date">26. Januar 2021</div>
           <div class="tl-title">Einzug ins neue Leben.</div>
-          <p class="tl-text">
-            Ab diesem Tag war klar: Aus einem Hund wird ein Familienmitglied, ein Charakterkopf
-            und langfristig ein emotional sehr relevanter Teil des Alltags.
-          </p>
+          <p class="tl-text">Ab diesem Tag war klar: Aus einem Hund wird ein Familienmitglied, ein Charakterkopf und langfristig ein emotional sehr relevanter Teil des Alltags.</p>
         </div>
         <div class="tl-item">
           <div class="tl-date">Seitdem</div>
           <div class="tl-title">Von der Straße in die Berge.</div>
-          <p class="tl-text">
-            Zwischen Stadtstress, Kuschelbedürfnis, Sicherheitsbedenken und Wursties entstand
-            aus Miko eine echte Legende auf vier Pfoten.
-          </p>
+          <p class="tl-text">Zwischen Stadtstress, Kuschelbedürfnis, Sicherheitsbedenken und Wursties entstand aus Miko eine echte Legende auf vier Pfoten.</p>
         </div>
       </div>
     </section>
 
-    <!-- CHARAKTER -->
     <section id="charakter">
       <div class="section-label">Charakterstudie</div>
       <h2>Wer ist Miko wirklich?</h2>
       <p class="section-intro">Die ehrliche Antwort: schwer in Worte zu fassen. Aber wir versuchen es trotzdem.</p>
-
       <div class="cards-grid">
         <div class="card">
           <h3>Sein Wesen</h3>
-          <p>
-            Miko ist stur, charakterstark, verschmust, kuschelig und manchmal ein kleiner Hosenscheißer.
-            Er liebt Sicherheit, Routinen und alles, was nicht plötzlich und laut daherkommt.
-          </p>
-          <p>
-            Sein Markenzeichen ist dieser Blick, als würde er jederzeit über die Schwere des Lebens nachdenken —
-            obwohl es wahrscheinlich gerade nur um Snacks geht.
-          </p>
+          <p>Miko ist stur, charakterstark, verschmust, kuschelig und manchmal ein kleiner Hosenscheißer. Er liebt Sicherheit, Routinen und alles, was nicht plötzlich und laut daherkommt.</p>
+          <p>Sein Markenzeichen ist dieser Blick, als würde er jederzeit über die Schwere des Lebens nachdenken — obwohl es wahrscheinlich gerade nur um Snacks geht.</p>
           <div class="pill-row">
-            <span class="pill">stur</span>
-            <span class="pill">verschmust</span>
-            <span class="pill">kompliziert</span>
-            <span class="pill">sensibel</span>
-            <span class="pill">cute</span>
-            <span class="pill">chaotisch</span>
+            <span class="pill">stur</span><span class="pill">verschmust</span><span class="pill">kompliziert</span><span class="pill">sensibel</span><span class="pill">cute</span><span class="pill">chaotisch</span>
           </div>
         </div>
-
         <div class="card">
           <h3>Offizielle Spitznamen</h3>
           <p>Je nach Situation, Stimmung und Würdegrad hört Miko auf mehrere Identitäten.</p>
           <div class="pill-row">
-            <span class="pill">Miko Mausi</span>
-            <span class="pill">Mirko</span>
-            <span class="pill">Miroslav Mirko</span>
-            <span class="pill">Karotten-Tiger</span>
+            <span class="pill">Miko Mausi</span><span class="pill">Mirko</span><span class="pill">Miroslav Mirko</span><span class="pill">Karotten-Tiger</span>
           </div>
-          <p style="margin-top:18px;">
-            Besonders seriös wirkt er meistens dann, wenn er überhaupt nicht seriös ist.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PULL QUOTE -->
-    <div class="pull-quote-section">
-      <div class="pull-quote-inner">
-        <p class="pull-quote">
-          Er schaut zwar aus, als hätte ihn das Leben enttäuscht.
-          In Wahrheit möchte er nur Wursties, Ruhe und das Kopfende im Bett.
-        </p>
-        <p class="quote-attr">— Eine nüchterne Bestandsaufnahme</p>
-      </div>
-    </div>
-
-    <!-- ALLTAG -->
-    <section id="alltag">
-      <div class="section-label">Alltag</div>
-      <h2>Was Miko liebt.<br>Und was eher nicht.</h2>
-      <p class="section-intro">Miko ist ein Hund mit klaren Prioritäten. Und diese Prioritäten sollten im Idealfall respektiert werden.</p>
-
-      <div class="cards-grid">
-        <div class="card">
-          <h3>Große Liebe</h3>
-          <p>
-            Wursties. Das Kopfende im Bett. Kuscheln. Sein Nashorn-Stofftier Qutischi.
-            Und überraschenderweise Karotten — weshalb er intern auch als <strong>Karotten-Tiger</strong> geführt wird.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Wovor er sich klar distanziert</h3>
-          <p>
-            Von allem Unvorhergesehenen. Von plötzlichen Momenten. Von Schrecksituationen.
-            Von Ereignissen, die ihm nicht vorher ordentlich angekündigt wurden.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Miko und das Essen</h3>
-          <p>
-            Wenn irgendwo Essen im Spiel ist, ist Miko emotional sofort beteiligt.
-            Er starrt. Konzentriert. Ausdauernd. Professionell.
-            Und falls Karotten im Raum sind, wird aus Interesse sehr schnell Leidenschaft.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Gassigehen für Fortgeschrittene</h3>
-          <p>
-            Miko in der Stadt bedeutet erhöhte Aufmerksamkeit.
-            Die Stadt stresst ihn, man muss mit ihm aufpassen und mitdenken.
-            Spaziergänge sind daher weniger „lockere Runde" und mehr eine fein abgestimmte
-            Mischung aus Rücksicht, Timing und Situationsmanagement.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Schlafordnung</h3>
-          <p>
-            Miko bevorzugt das Kopfende. Nicht aus Zufall, sondern aus Überzeugung.
-            Manche Hunde suchen sich ein Plätzchen. Miko trifft Wohnentscheidungen.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Qutischi</h3>
-          <p>
-            Qutischi ist kein gewöhnliches Stofftier. Qutischi ist das Nashorn seines Vertrauens
-            und damit ein fester Bestandteil des Mikoversums.
-          </p>
+          <p style="margin-top:14px;">Besonders seriös wirkt er meistens dann, wenn er überhaupt nicht seriös ist.</p>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- FÜTTERUNG -->
+  <div class="pull-quote-section">
+    <div class="pull-quote-inner">
+      <p class="pull-quote">Er schaut zwar aus, als hätte ihn das Leben enttäuscht. In Wahrheit möchte er nur Wursties, Ruhe und das Kopfende im Bett.</p>
+      <p class="quote-attr">— Eine nüchterne Bestandsaufnahme</p>
+    </div>
+  </div>
+
+  <main>
+    <section id="alltag">
+      <div class="section-label">Alltag</div>
+      <h2>Was Miko liebt. Und was eher nicht.</h2>
+      <p class="section-intro">Miko ist ein Hund mit klaren Prioritäten. Und diese Prioritäten sollten im Idealfall respektiert werden.</p>
+      <div class="cards-grid">
+        <div class="card">
+          <h3>Große Liebe</h3>
+          <p>Wursties. Das Kopfende im Bett. Kuscheln. Sein Nashorn-Stofftier Qutischi. Und überraschenderweise Karotten — weshalb er intern auch als <strong>Karotten-Tiger</strong> geführt wird.</p>
+        </div>
+        <div class="card">
+          <h3>Wovor er sich klar distanziert</h3>
+          <p>Von allem Unvorhergesehenen. Von plötzlichen Momenten. Von Schrecksituationen. Von Ereignissen, die ihm nicht vorher ordentlich angekündigt wurden.</p>
+        </div>
+        <div class="card">
+          <h3>Miko und das Essen</h3>
+          <p>Wenn irgendwo Essen im Spiel ist, ist Miko emotional sofort beteiligt. Er starrt. Konzentriert. Ausdauernd. Professionell. Und falls Karotten im Raum sind, wird aus Interesse sehr schnell Leidenschaft.</p>
+        </div>
+        <div class="card">
+          <h3>Gassigehen für Fortgeschrittene</h3>
+          <p>Miko in der Stadt bedeutet erhöhte Aufmerksamkeit. Spaziergänge sind weniger „lockere Runde" und mehr eine fein abgestimmte Mischung aus Rücksicht, Timing und Situationsmanagement.</p>
+        </div>
+        <div class="card">
+          <h3>Schlafordnung</h3>
+          <p>Miko bevorzugt das Kopfende. Nicht aus Zufall, sondern aus Überzeugung. Manche Hunde suchen sich ein Plätzchen. Miko trifft Wohnentscheidungen.</p>
+        </div>
+        <div class="card">
+          <h3>Qutischi</h3>
+          <p>Qutischi ist kein gewöhnliches Stofftier. Qutischi ist das Nashorn seines Vertrauens und damit ein fester Bestandteil des Mikoversums.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <div class="feeding-section" id="fuetterung">
     <div class="feeding-inner">
       <div class="feeding-label">Täglich · 2× pro Tag</div>
       <h2 class="feeding-title">Mikos <em>Fütterungsplan</em></h2>
       <p class="feeding-subtitle">Morgens & abends — mit Überzeugung serviert.</p>
-
       <div class="meals-grid">
         <div class="meal-card">
-          <div class="meal-time">
-            <span class="meal-time-icon">🌅</span>
-            Morgens
-          </div>
+          <div class="meal-time"><span class="meal-time-icon">🌅</span> Morgens</div>
           <h3>Frühstück</h3>
           <ul class="ingredient-list">
-            <li>
-              <span class="ingredient-icon">🦴</span>
-              <span><span class="ingredient-amount">65 g</span> Trockenfutter</span>
-            </li>
-            <li>
-              <span class="ingredient-icon">💊</span>
-              <span><span class="ingredient-amount">½ Tablette</span> Canephedrin</span>
-            </li>
-            <li>
-              <span class="ingredient-icon">🌿</span>
-              <span>Futtertopping für die <span class="ingredient-amount">Darmflora</span></span>
-            </li>
+            <li><span class="ingredient-icon">🦴</span><span><span class="ingredient-amount">65 g</span> Trockenfutter</span></li>
+            <li><span class="ingredient-icon">💊</span><span><span class="ingredient-amount">½ Tablette</span> Canephedrin</span></li>
+            <li><span class="ingredient-icon">🌿</span><span>Futtertopping für die <span class="ingredient-amount">Darmflora</span></span></li>
           </ul>
         </div>
-
         <div class="meal-card">
-          <div class="meal-time">
-            <span class="meal-time-icon">🌙</span>
-            Abends
-          </div>
+          <div class="meal-time"><span class="meal-time-icon">🌙</span> Abends</div>
           <h3>Abendessen</h3>
           <ul class="ingredient-list">
-            <li>
-              <span class="ingredient-icon">🦴</span>
-              <span><span class="ingredient-amount">65 g</span> Trockenfutter</span>
-            </li>
-            <li>
-              <span class="ingredient-icon">💊</span>
-              <span><span class="ingredient-amount">½ Tablette</span> Canephedrin</span>
-            </li>
-            <li>
-              <span class="ingredient-icon">🌿</span>
-              <span>Futtertopping für die <span class="ingredient-amount">Darmflora</span></span>
-            </li>
+            <li><span class="ingredient-icon">🦴</span><span><span class="ingredient-amount">65 g</span> Trockenfutter</span></li>
+            <li><span class="ingredient-icon">💊</span><span><span class="ingredient-amount">½ Tablette</span> Canephedrin</span></li>
+            <li><span class="ingredient-icon">🌿</span><span>Futtertopping für die <span class="ingredient-amount">Darmflora</span></span></li>
           </ul>
         </div>
       </div>
-
       <div class="feeding-note">
-        <strong>Hinweis:</strong> Das Canephedrin unbedingt gut im Futter verstecken —
-        Miko hat einen Sinn dafür, wann etwas nicht ganz koscher ist.
-        Das Topping einfach obendrauf, das nimmt er als persönliche Würdigung entgegen.
+        <strong>Hinweis:</strong> Das Canephedrin unbedingt gut im Futter verstecken — Miko hat einen Sinn dafür, wann etwas nicht ganz koscher ist. Das Topping einfach obendrauf, das nimmt er als persönliche Würdigung entgegen.
       </div>
     </div>
   </div>
 
-  <!-- FOOTER -->
+  <div class="lostfound-section" id="lostfound">
+    <div class="lostfound-inner">
+
+      <div class="lostfound-header">
+        <div class="section-label">Notfall</div>
+        <h2>Lost & Found</h2>
+        <p class="section-intro" style="text-align:center; margin: 0 auto;">
+          Du hast Miko gefunden? Erstmal tief durchatmen. Dann diese Seite lesen. Und dann anrufen.
+        </p>
+      </div>
+
+      <div class="lostfound-contact-card">
+        <div class="contact-label">Bei Fund sofort melden</div>
+        <div class="contact-name">Christoph Mayr</div>
+        <a href="tel:+4365051303490" class="contact-phone">
+          <span class="contact-phone-icon">📞</span>
+          +43 650 5130349
+        </a>
+        <div style="font-size:12px; color:rgba(255,255,255,0.35); letter-spacing:0.5px;">Bitte nicht zögern — jederzeit anrufen.</div>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div class="section-label" style="margin-bottom:14px;">Verhaltensregeln wenn du Miko findest</div>
+      </div>
+
+      <div class="lostfound-rules">
+
+        <div class="rule-card do">
+          <span class="rule-icon">🥕</span>
+          <div class="rule-content">
+            <div class="rule-tag tip">Geheimwaffe</div>
+            <h4>Mit Karotten ist er dein Freund</h4>
+            <p>Ernsthaft. Eine Karotte in der Hand und Miko vergisst kurzzeitig, dass er Fremde prinzipiell skeptisch betrachtet. Karotten sind die universelle Sprache, die er versteht. Falls du keine dabei hast: Wursties funktionieren ebenfalls.</p>
+          </div>
+        </div>
+
+        <div class="rule-card do">
+          <span class="rule-icon">🐢</span>
+          <div class="rule-content">
+            <div class="rule-tag do">Tu das</div>
+            <h4>Ruhig und langsam bleiben</h4>
+            <p>Miko ist ein sensibler Seele. Keine schnellen Bewegungen, keine lauten Geräusche. Knie dich am besten seitlich hin, schau ihn nicht direkt an und lass ihn auf dich zukommen. Geduld ist hier keine Tugend — sie ist eine Notwendigkeit.</p>
+          </div>
+        </div>
+
+        <div class="rule-card do">
+          <span class="rule-icon">🗣️</span>
+          <div class="rule-content">
+            <div class="rule-tag do">Tu das</div>
+            <h4>Ruhig mit ihm sprechen</h4>
+            <p>Eine leise, gleichmäßige Stimme beruhigt ihn. Sag einfach immer wieder „Miko" — er kennt seinen Namen. Vermeide hohe, aufgeregte Töne. Er braucht das Gefühl, dass die Situation unter Kontrolle ist.</p>
+          </div>
+        </div>
+
+        <div class="rule-card do">
+          <span class="rule-icon">📍</span>
+          <div class="rule-content">
+            <div class="rule-tag do">Tu das</div>
+            <h4>Position sichern und anrufen</h4>
+            <p>Bleib wo du bist, sichere Miko so gut du kannst (Leine, eingezäunter Bereich) und ruf sofort Christoph an: <strong>+43 650 5130349</strong>. Je früher desto besser — Miko kennt sein Zuhause und wird unruhiger je länger er weg ist.</p>
+          </div>
+        </div>
+
+        <div class="rule-card dont">
+          <span class="rule-icon">🚫</span>
+          <div class="rule-content">
+            <div class="rule-tag dont">Nicht tun</div>
+            <h4>Nicht plötzlich auf ihn zustürmen</h4>
+            <p>Miko und das Unvorhergesehene — das ist eine komplizierte Beziehung. Ein fremder Mensch, der plötzlich auf ihn zurennt, ist für ihn eine Krisensituation. Er könnte flüchten und das macht alles schwieriger.</p>
+          </div>
+        </div>
+
+        <div class="rule-card dont">
+          <span class="rule-icon">📢</span>
+          <div class="rule-content">
+            <div class="rule-tag dont">Nicht tun</div>
+            <h4>Nicht schreien oder laut werden</h4>
+            <p>Selbst wenn es gut gemeint ist — laute Geräusche bringen Miko in den inneren Krisenmodus. Kein Klatschen, kein Pfeifen, kein aufgeregtes Rufen. Leise ist das neue Laut.</p>
+          </div>
+        </div>
+
+        <div class="rule-card dont">
+          <span class="rule-icon">🤲</span>
+          <div class="rule-content">
+            <div class="rule-tag dont">Vorsicht</div>
+            <h4>Nicht sofort anfassen wollen</h4>
+            <p>Miko entscheidet selbst, wann Körperkontakt okay ist. Strecke die Hand aus, lass ihn schnuppern — und warte. Wenn er sich wegdreht, ist das ein klares Nein. Respektiere das. Er kommt, wenn er bereit ist.</p>
+          </div>
+        </div>
+
+        <div class="rule-card special">
+          <span class="rule-icon">🏠</span>
+          <div class="rule-content">
+            <div class="rule-tag tip">Wichtig</div>
+            <h4>Nicht mit nach Hause nehmen</h4>
+            <p>So gut gemeint es wäre — eine fremde Umgebung stresst Miko enorm. Bleib mit ihm an einem ruhigen Ort, ruf an und warte auf Christoph. Miko braucht sein gewohntes Umfeld und vor allem: sein Kopfende im Bett.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-ornament">✦</div>
       <h2>Ein kleiner Hund mit<br><em style="font-style:italic; color:var(--gold)">großem Innenleben</em></h2>
-      <p>
-        Miko ist nicht einfach nur süß. Er ist sensibel, kompliziert, herzig, charakterstark
-        und auf seine ganz eigene Art absolut unverwechselbar.
-        Eben keine gewöhnliche Fellnase, sondern: <strong>Miko – eine Legende auf vier Pfoten.</strong>
-      </p>
-      <p class="footer-meta">✦ &nbsp; Miko Mausi &nbsp; ✦ &nbsp; geb. 09.11.2020 &nbsp; ✦ &nbsp; ungarischer Straßenmix &nbsp; ✦</p>
+      <p>Miko ist nicht einfach nur süß. Er ist sensibel, kompliziert, herzig, charakterstark und auf seine ganz eigene Art absolut unverwechselbar. Eben keine gewöhnliche Fellnase, sondern: <strong>Miko – eine Legende auf vier Pfoten.</strong></p>
+      <p class="footer-meta">✦ &nbsp; Miko Mausi &nbsp; ✦<br>geb. 09.11.2020 &nbsp; ✦ &nbsp; ungarischer Straßenmix &nbsp; ✦</p>
     </div>
   </footer>
+
   <script>
     const EMOJIS = ['🐾','🐾','❤️','🍖','🐾','💛','🐾','❤️','🍖','🐾'];
-
     function spawnEmoji() {
       const el = document.createElement('span');
       el.classList.add('emoji-float');
       el.textContent = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
-
-      const x = Math.random() * (window.innerWidth - 60);
-      const y = window.innerHeight - 40 - Math.random() * (window.innerHeight * 0.3);
+      const x = Math.random() * (window.innerWidth - 50);
+      const y = window.innerHeight - 20 - Math.random() * (window.innerHeight * 0.25);
       const dur = 3.5 + Math.random() * 2.5;
-
       el.style.left = x + 'px';
       el.style.top = y + 'px';
       el.style.setProperty('--dur', dur + 's');
-      el.style.fontSize = (20 + Math.random() * 16) + 'px';
-
+      el.style.fontSize = (18 + Math.random() * 14) + 'px';
       document.body.appendChild(el);
       setTimeout(() => el.remove(), dur * 1000);
     }
-
-    // spawn periodically
-    setInterval(spawnEmoji, 700);
-    // burst on load
-    setTimeout(() => { for(let i=0;i<5;i++) setTimeout(spawnEmoji, i*180); }, 800);
+    setInterval(spawnEmoji, 800);
+    setTimeout(() => { for(let i=0;i<4;i++) setTimeout(spawnEmoji, i*200); }, 600);
   </script>
 </body>
 </html>
